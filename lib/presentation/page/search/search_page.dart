@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:clean_app/presentation/page/search/widget/crypto_search_bar.dart';
+import 'package:clean_app/presentation/page/search/widget/widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +26,18 @@ class SearchPage extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            SizedBox(height: 50.h),
+            SizedBox(height: 30.h),
+            Expanded(
+              child: ListView.separated(
+                itemCount: 7,
+                itemBuilder: (BuildContext context, int index) {
+                  return const CryptoCoinListTile();
+                },
+                separatorBuilder: (BuildContext context, int index) => SizedBox(
+                  height: 10.h,
+                ),
+              ),
+            ),
           ],
         ),
       ),

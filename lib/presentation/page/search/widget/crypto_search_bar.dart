@@ -9,6 +9,12 @@ class CryptoSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      cursorColor: Palette.primary,
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w400,
+      ),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20,
