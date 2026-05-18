@@ -66,9 +66,6 @@ class _$GlobalDataEventCopyWithImpl<$Res, $Val extends GlobalDataEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of GlobalDataEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -85,9 +82,6 @@ class __$$GetGlobalDataEventImplCopyWithImpl<$Res>
   __$$GetGlobalDataEventImplCopyWithImpl(_$GetGlobalDataEventImpl _value,
       $Res Function(_$GetGlobalDataEventImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of GlobalDataEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -177,9 +171,7 @@ mixin _$GlobalDataState {
   GlobalData? get globalData => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
 
-  /// Create a copy of GlobalDataState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $GlobalDataStateCopyWith<GlobalDataState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -203,8 +195,6 @@ class _$GlobalDataStateCopyWithImpl<$Res, $Val extends GlobalDataState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of GlobalDataState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -245,8 +235,6 @@ class __$$GlobalDataStateImplCopyWithImpl<$Res>
       _$GlobalDataStateImpl _value, $Res Function(_$GlobalDataStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of GlobalDataState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -300,9 +288,7 @@ class _$GlobalDataStateImpl implements _GlobalDataState {
   int get hashCode => Object.hash(runtimeType, status, globalData,
       const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of GlobalDataState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$GlobalDataStateImplCopyWith<_$GlobalDataStateImpl> get copyWith =>
@@ -321,11 +307,8 @@ abstract class _GlobalDataState implements GlobalDataState {
   GlobalData? get globalData;
   @override
   Object? get error;
-
-  /// Create a copy of GlobalDataState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$GlobalDataStateImplCopyWith<_$GlobalDataStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

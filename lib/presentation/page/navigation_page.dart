@@ -48,6 +48,7 @@ class _NavigationPageState extends State<NavigationPage> {
                 backgroundColor: Theme.of(context).primaryColor,
                 routes: const <PageRouteInfo<dynamic>>[
                   RatingsRoute(),
+                  SearchWrapperRoute(),
                   MarketRoute(),
                   SettingsRoute(),
                 ],
@@ -74,6 +75,19 @@ class _NavigationPageState extends State<NavigationPage> {
                           ),
                           title: Text(
                             'ratings'.tr(),
+                          ),
+                        ),
+                        SalomonBottomBarItem(
+                          activeIcon: Icon(
+                            Icons.search,
+                            color: Theme.of(context).focusColor,
+                          ),
+                          icon: Icon(
+                            Icons.search,
+                            color: Theme.of(context).hintColor,
+                          ),
+                          title: Text(
+                            'search'.tr(),
                           ),
                         ),
                         SalomonBottomBarItem(
