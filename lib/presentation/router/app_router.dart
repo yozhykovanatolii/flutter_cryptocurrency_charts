@@ -22,7 +22,10 @@ class AppRouter extends RootStackRouter {
                 AutoRoute(
                   page: SearchRoute.page,
                   initial: true,
-                )
+                ),
+                AutoRoute(
+                  page: SearchResultRoute.page,
+                ),
               ],
             ),
             // Define Market route

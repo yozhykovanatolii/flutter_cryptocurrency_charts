@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:clean_app/presentation/router/app_router.gr.dart';
 import 'package:clean_app/theme/palette.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +24,14 @@ class CryptoSearchBar extends StatelessWidget {
         ),
         filled: true,
         fillColor: Palette.warmBlack,
-        suffixIcon: Icon(
-          Icons.search,
-          size: 28.sp,
+        suffixIcon: GestureDetector(
+          onTap: () {
+            context.router.push(const SearchResultRoute());
+          },
+          child: Icon(
+            Icons.search,
+            size: 28.sp,
+          ),
         ),
         suffixIconColor: Palette.primary,
         hintText: 'search'.tr(),
