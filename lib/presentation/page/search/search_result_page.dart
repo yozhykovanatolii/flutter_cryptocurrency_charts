@@ -30,6 +30,7 @@ class SearchResultPage extends StatelessWidget {
             color: Colors.white,
             fontSize: 17.sp,
             fontWeight: FontWeight.w700,
+            fontFamily: 'Inter',
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:clean_app/theme/palette.dart';
+import 'package:clean_app/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,11 +17,7 @@ class CryptoCoinListTile extends StatelessWidget {
       ),
       title: Text(
         'Bitcoin',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w700,
-        ),
+        style: TextStyles.sectionTextStyle,
       ),
       trailing: Container(
         padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 3.h),

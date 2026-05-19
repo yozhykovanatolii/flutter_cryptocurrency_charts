@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clean_app/presentation/page/search/widget/widget.dart';
+import 'package:clean_app/theme/text_styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,11 +21,7 @@ class SearchPage extends StatelessWidget {
             SizedBox(height: 30.h),
             Text(
               'top_seven_trending_coins'.tr(),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w700,
-              ),
+              style: TextStyles.sectionTextStyle,
             ),
             SizedBox(height: 30.h),
             Expanded(

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clean_app/presentation/router/app_router.gr.dart';
 import 'package:clean_app/theme/palette.dart';
+import 'package:clean_app/theme/text_styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,11 +13,7 @@ class CryptoSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       cursorColor: Palette.primary,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w400,
-      ),
+      style: TextStyles.textFieldTextStyle,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20,
@@ -35,11 +32,7 @@ class CryptoSearchBar extends StatelessWidget {
         ),
         suffixIconColor: Palette.primary,
         hintText: 'search'.tr(),
-        hintStyle: TextStyle(
-          color: const Color(0xFFBDBDBD),
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w400,
-        ),
+        hintStyle: TextStyles.hintStyle,
         enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(12),

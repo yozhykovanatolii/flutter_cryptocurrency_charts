@@ -43,6 +43,10 @@ flutter:
   assets:
     - assets/images/
     - assets/translations/
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-VariableFont_opsz,wght.ttf
 flutter_native_splash:
   color: "#0C0B09"
   image: "assets/images/crypto_splash_screen.png"
