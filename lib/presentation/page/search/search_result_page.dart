@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clean_app/presentation/page/search/widget/crypto_coin_list_tile.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:clean_app/presentation/page/search/widget/search_result_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,17 +11,7 @@ class SearchResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: GestureDetector(
-          onTap: () {
-            context.router.maybePop();
-          },
-          child: const Icon(Icons.arrow_back),
-        ),
-        title: Text(
-          'searchedResult'.tr(args: <String>['bit']),
-        ),
-      ),
+      appBar: const SearchResultAppBar(),
       body: Padding(
         padding: EdgeInsets.only(top: 15.h),
         child: ListView.separated(

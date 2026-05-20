@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:clean_app/presentation/bloc/search/search_bloc.dart';
 import 'package:clean_app/presentation/router/app_router.gr.dart';
 import 'package:clean_app/theme/palette.dart';
 import 'package:clean_app/theme/text_styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CryptoSearchBar extends StatelessWidget {
@@ -14,6 +16,11 @@ class CryptoSearchBar extends StatelessWidget {
     return TextField(
       cursorColor: Palette.primary,
       style: TextStyles.bodyMediumStyle,
+      onChanged: (String searchText) {
+        context.read<SearchBloc>().add(
+              SearchEvent.changeSearchText(searchText: searchText),
+            );
+      },
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20,
