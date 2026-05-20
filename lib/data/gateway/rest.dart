@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:clean_app/assembly/factory.dart';
 import 'package:clean_app/backbone/rest_api_urls.dart';
+import 'package:clean_app/data/mapper/coin_mapper.dart';
 import 'package:clean_app/data/model/coin.dart';
 import 'package:clean_app/data/model/global_data.dart';
 import 'package:http/http.dart' as http;
@@ -57,6 +58,50 @@ class RestGateway {
         jsonResponse['data'] as Map<String, dynamic>;
 
     return _globalDataDtoFactory.create(globalDataJson);
+  }
+
+  Future<List<CoinDto>> getCoinsBySearchText(String searchText) async {
+    final http.Response response = await _getRequest(
+      baseUrl,
+      '',
+      queryParams: <String, String>{'query': searchText},
+    );
+    if (response.statusCode == 429) {
+      throw const HttpException('429');
+    } else if (response.statusCode != 200) {
+      throw HttpException(
+        'Failed to fetch coins. Status: ${response.statusCode}',
+      );
+    }
+    final Map<String, dynamic> jsonResponse = json.decode(response.body);
+    final List<Map<String, dynamic>> searchedCoinsJson =
+        List<Map<String, dynamic>>.from(jsonResponse['coins']);
+    final List<Map<String, dynamic>> normalizedSearchedCoinsJson =
+        searchedCoinsJson
+            .map((Map<String, dynamic> e) =>
+                CoinMapper.normalizeSearchedCoins(e))
+            .toList();
+    return normalizedSearchedCoinsJson.map(_coinDtoFactory.create).toList();
+  }
+
+  Future<List<CoinDto>> getTrendingCoins() async {
+    final http.Response response = await _getRequest(baseUrl, '');
+    if (response.statusCode == 429) {
+      throw const HttpException('429');
+    } else if (response.statusCode != 200) {
+      throw HttpException(
+        'Failed to fetch coins. Status: ${response.statusCode}',
+      );
+    }
+    final Map<String, dynamic> jsonResponse = json.decode(response.body);
+    final List<Map<String, dynamic>> trendingCoinsJson =
+        List<Map<String, dynamic>>.from(jsonResponse['coins']);
+    final List<Map<String, dynamic>> normalizedTrendingCoinsJson =
+        trendingCoinsJson
+            .map((Map<String, dynamic> e) =>
+                CoinMapper.normalizeTrendingCoins(e))
+            .toList();
+    return normalizedTrendingCoinsJson.map(_coinDtoFactory.create).toList();
   }
 
   Future<http.Response> _getRequest(
