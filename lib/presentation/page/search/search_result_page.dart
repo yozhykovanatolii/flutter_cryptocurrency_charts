@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:clean_app/backbone/bloc_status.dart';
 import 'package:clean_app/domain/entity/coin.dart';
 import 'package:clean_app/presentation/bloc/search/search_bloc.dart';
 import 'package:clean_app/presentation/page/search/widget/crypto_coin_list_tile.dart';
@@ -22,13 +21,13 @@ class SearchResultPage extends StatelessWidget {
         padding: EdgeInsets.only(top: 15.h),
         child: BlocBuilder<SearchBloc, SearchState>(
           builder: (BuildContext context, SearchState state) {
-            final BlocStatus status = state.status;
-            if (status == BlocStatus.Error) {
+            final SearchStatus searchedCoinsStatus = state.searchedCoinsStatus;
+            if (searchedCoinsStatus == SearchStatus.failure) {
               return const Center(
                 child: RefreshButton(),
               );
             }
-            if (status == BlocStatus.Loaded) {
+            if (searchedCoinsStatus == SearchStatus.success) {
               final List<Coin> searchedCoins = state.searchedCoins;
               return ListView.separated(
                 itemCount: searchedCoins.length,
@@ -36,7 +35,9 @@ class SearchResultPage extends StatelessWidget {
                   horizontal: 15.w,
                 ),
                 itemBuilder: (_, int index) {
-                  return const CryptoCoinListTile();
+                  return CryptoCoinListTile(
+                    coin: searchedCoins[index],
+                  );
                 },
                 separatorBuilder: (BuildContext context, int index) => SizedBox(
                   height: 10.h,

@@ -27,7 +27,48 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   Future<void> _fetchTrendingCoins(
     SearchFetchedTrendingCoinsEvent event,
     Emitter<SearchState> emit,
-  ) async {}
+  ) async {
+    emit(state.copyWith(trendingCoinsStatus: SearchStatus.loading));
+    try {
+      final List<Coin> trendingCoins = await _getTrendingCoinsUseCase.call();
+      emit(state.copyWith(
+        trendingCoinsStatus: SearchStatus.success,
+        trendingCoins: trendingCoins,
+      ));
+    } on HttpException catch (e) {
+      if (e.message == '429' && state.trendingCoins.isNotEmpty) {
+        emit(
+          state.copyWith(
+            trendingCoinsStatus: SearchStatus.success,
+          ),
+        );
+      } else {
+        emit(
+          state.copyWith(
+            trendingCoinsStatus: SearchStatus.failure,
+          ),
+        );
+      }
+    } on SocketException {
+      emit(
+        state.copyWith(
+          trendingCoinsStatus: SearchStatus.failure,
+        ),
+      );
+    } on FormatException {
+      emit(
+        state.copyWith(
+          trendingCoinsStatus: SearchStatus.failure,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          trendingCoinsStatus: SearchStatus.failure,
+        ),
+      );
+    }
+  }
 
   Future<void> _changeSearchText(
     SearchChangedSearchTextEvent event,
@@ -40,19 +81,19 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     SearchCoinsEvent event,
     Emitter<SearchState> emit,
   ) async {
-    emit(state.copyWith(status: BlocStatus.Loading));
+    emit(state.copyWith(searchedCoinsStatus: SearchStatus.loading));
     try {
       final List<Coin> searchedCoins = await _searchCoinsUseCase.call(
         state.searchText,
       );
       emit(state.copyWith(
-        status: BlocStatus.Loaded,
+        searchedCoinsStatus: SearchStatus.success,
         searchedCoins: searchedCoins,
       ));
     } on HttpException catch (e) {
       if (e.message == '429') {
         emit(state.copyWith(
-          status: BlocStatus.Loaded,
+          searchedCoinsStatus: SearchStatus.success,
         ));
       } else {
         emit(_errorState('Server error: ${e.message}'));
@@ -67,7 +108,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   }
 
   SearchState _errorState(String message) => state.copyWith(
-        status: BlocStatus.Error,
+        searchedCoinsStatus: SearchStatus.failure,
         error: message,
       );
 }

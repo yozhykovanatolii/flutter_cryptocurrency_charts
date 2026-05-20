@@ -1,21 +1,27 @@
+import 'package:clean_app/domain/entity/coin.dart';
 import 'package:clean_app/theme/palette.dart';
 import 'package:clean_app/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CryptoCoinListTile extends StatelessWidget {
-  const CryptoCoinListTile({super.key});
+  final Coin coin;
+
+  const CryptoCoinListTile({
+    required this.coin,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      leading: Icon(
-        Icons.add_circle,
-        size: 30.sp,
-        color: Colors.white,
+      leading: Image.network(
+        coin.image!,
+        width: 30.w,
+        height: 30.h,
       ),
-      title: const Text('Bitcoin'),
+      title: Text(coin.name!),
       trailing: Container(
         padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 3.h),
         decoration: BoxDecoration(
@@ -23,7 +29,7 @@ class CryptoCoinListTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(7.r),
         ),
         child: Text(
-          '1',
+          '${coin.marketCap}',
           style: TextStyles.bodyMediumStyle,
         ),
       ),
