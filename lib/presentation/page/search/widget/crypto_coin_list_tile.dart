@@ -15,25 +15,16 @@ class CryptoCoinListTile extends StatelessWidget {
         size: 30.sp,
         color: Colors.white,
       ),
-      title: Text(
-        'Bitcoin',
-        style: TextStyles.sectionTextStyle,
-      ),
+      title: const Text('Bitcoin'),
       trailing: Container(
         padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 3.h),
         decoration: BoxDecoration(
           color: Palette.base4,
-          borderRadius: BorderRadius.circular(
-            7.r,
-          ),
+          borderRadius: BorderRadius.circular(7.r),
         ),
         child: Text(
           '1',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w700,
-          ),
+          style: TextStyles.bodyMediumStyle,
         ),
       ),
     );

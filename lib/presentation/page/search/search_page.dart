@@ -21,7 +21,9 @@ class SearchPage extends StatelessWidget {
             SizedBox(height: 30.h),
             Text(
               'top_seven_trending_coins'.tr(),
-              style: TextStyles.sectionTextStyle,
+              style: TextStyles.sectionTextStyle.copyWith(
+                color: Theme.of(context).hintColor,
+              ),
             ),
             SizedBox(height: 30.h),
             Expanded(

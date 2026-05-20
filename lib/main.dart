@@ -1,6 +1,8 @@
 import 'package:clean_app/backbone/dependency_injection.dart' as di;
 import 'package:clean_app/presentation/bloc/settings/bloc.dart';
 import 'package:clean_app/presentation/router/app_router.dart';
+import 'package:clean_app/theme/crypto_app_bar_theme.dart';
+import 'package:clean_app/theme/crypto_list_tile_theme.dart';
 import 'package:clean_app/theme/palette.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -57,17 +59,21 @@ class _MyAppState extends State<MyApp> {
             locale: context.locale,
             theme: ThemeData(
               scaffoldBackgroundColor: Colors.white,
+              appBarTheme: CryptoAppBarTheme.lightAppBar,
               primaryColor: Palette.overlay1,
               hintColor: Palette.background,
               focusColor: Palette.tertriary,
+              listTileTheme: CryptoListTileTheme.lightListTile,
             ),
             themeMode:
                 state.themeType == 'night' ? ThemeMode.dark : ThemeMode.light,
             darkTheme: ThemeData(
               scaffoldBackgroundColor: Palette.background,
+              appBarTheme: CryptoAppBarTheme.darkAppBar,
               primaryColor: Palette.base1,
               hintColor: Palette.white,
               focusColor: Palette.primary,
+              listTileTheme: CryptoListTileTheme.darkListTile,
             ),
             debugShowCheckedModeBanner: false,
             title: 'Crypto Aggregator',

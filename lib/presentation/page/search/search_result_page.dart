@@ -12,27 +12,14 @@ class SearchResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        surfaceTintColor: Theme.of(context).scaffoldBackgroundColor,
-        centerTitle: false,
         leading: GestureDetector(
           onTap: () {
             context.router.maybePop();
           },
-          child: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-            size: 25.sp,
-          ),
+          child: const Icon(Icons.arrow_back),
         ),
         title: Text(
           'searchedResult'.tr(args: <String>['bit']),
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 17.sp,
-            fontWeight: FontWeight.w700,
-            fontFamily: 'Inter',
-          ),
         ),
       ),
       body: Padding(

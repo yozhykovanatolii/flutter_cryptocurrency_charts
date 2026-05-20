@@ -13,7 +13,7 @@ class CryptoSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       cursorColor: Palette.primary,
-      style: TextStyles.textFieldTextStyle,
+      style: TextStyles.bodyMediumStyle,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20,

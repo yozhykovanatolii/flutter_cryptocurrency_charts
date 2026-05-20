@@ -41,7 +41,7 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     fontFamily: 'Inter',
   );
-  static TextStyle textFieldTextStyle = TextStyle(
+  static TextStyle bodyMediumStyle = TextStyle(
     color: Colors.white,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
