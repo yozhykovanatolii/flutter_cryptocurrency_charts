@@ -15,7 +15,6 @@ class CryptoCoinListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.zero,
       leading: Image.network(
         coin.image!,
         width: 30.w,

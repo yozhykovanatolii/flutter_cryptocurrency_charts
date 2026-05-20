@@ -3,8 +3,8 @@ import 'package:clean_app/domain/entity/coin.dart';
 import 'package:clean_app/presentation/bloc/search/search_bloc.dart';
 import 'package:clean_app/presentation/page/search/widget/crypto_coin_list_tile.dart';
 import 'package:clean_app/presentation/page/search/widget/search_result_app_bar.dart';
+import 'package:clean_app/presentation/page/search/widget/shimmer_coin_list_tile.dart';
 import 'package:clean_app/presentation/widget/refresh_button.dart';
-import 'package:clean_app/presentation/widget/shimmers/shimmer_coin_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,7 +44,18 @@ class SearchResultPage extends StatelessWidget {
                 ),
               );
             }
-            return const ShimmerCoinListView(itemCount: 15);
+            return ListView.separated(
+              itemCount: 15,
+              padding: EdgeInsets.symmetric(
+                horizontal: 15.w,
+              ),
+              itemBuilder: (_, int index) {
+                return const ShimmerCoinListTile();
+              },
+              separatorBuilder: (BuildContext context, int index) => SizedBox(
+                height: 10.h,
+              ),
+            );
           },
         ),
       ),
