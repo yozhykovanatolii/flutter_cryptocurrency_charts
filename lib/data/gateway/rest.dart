@@ -63,7 +63,7 @@ class RestGateway {
   Future<List<CoinDto>> getCoinsBySearchText(String searchText) async {
     final http.Response response = await _getRequest(
       baseUrl,
-      '',
+      searchingCoinsUrl,
       queryParams: <String, String>{'query': searchText},
     );
     if (response.statusCode == 429) {
@@ -85,7 +85,7 @@ class RestGateway {
   }
 
   Future<List<CoinDto>> getTrendingCoins() async {
-    final http.Response response = await _getRequest(baseUrl, '');
+    final http.Response response = await _getRequest(baseUrl, trendingCoinsUrl);
     if (response.statusCode == 429) {
       throw const HttpException('429');
     } else if (response.statusCode != 200) {
