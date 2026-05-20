@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clean_app/presentation/page/search/widget/crypto_coin_list_tile.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,7 +26,7 @@ class SearchResultPage extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Search results for bit',
+          'searchedResult'.tr(args: <String>['bit']),
           style: TextStyle(
             color: Colors.white,
             fontSize: 17.sp,

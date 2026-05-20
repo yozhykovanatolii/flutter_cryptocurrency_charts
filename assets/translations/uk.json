@@ -20,5 +20,6 @@
     "top_five_coins": "Топ 5 Монет",
     "top_seven_trending_coins": "Топ 7 найпопулярніших монет",
     "day": "д",
-    "ukranian": "Українська"
+    "ukranian": "Українська",
+    "searchedResult": "Результати пошуку по {}"
 }

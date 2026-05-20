@@ -20,5 +20,6 @@
     "top_five_coins": "Top 5 Coins",
     "top_seven_trending_coins": "Top 7 Trending Coins",
     "day": "d",
-    "ukranian": "Ukranian"
+    "ukranian": "Ukranian",
+    "searchedResult": "Search results for {}"
 }
