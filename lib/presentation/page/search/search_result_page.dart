@@ -13,8 +13,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
-class SearchResultPage extends StatelessWidget {
+class SearchResultPage extends StatefulWidget {
   const SearchResultPage({super.key});
+
+  @override
+  State<SearchResultPage> createState() => _SearchResultPageState();
+}
+
+class _SearchResultPageState extends State<SearchResultPage> {
+  @override
+  void initState() {
+    context.read<SearchBloc>().add(const SearchEvent.getCoinsBySearchText());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

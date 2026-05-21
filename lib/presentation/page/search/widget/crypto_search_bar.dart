@@ -30,9 +30,6 @@ class CryptoSearchBar extends StatelessWidget {
         fillColor: Palette.warmBlack,
         suffixIcon: GestureDetector(
           onTap: () {
-            context
-                .read<SearchBloc>()
-                .add(const SearchEvent.getCoinsBySearchText());
             context.router.push(const SearchResultRoute());
           },
           child: Icon(
