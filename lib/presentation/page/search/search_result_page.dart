@@ -46,6 +46,7 @@ class SearchResultPage extends StatelessWidget {
                       child: Center(
                         child: Text(
                           state.searchErrorType.mapSearchErrorTypeToMessage(),
+                          textAlign: TextAlign.center,
                           style: TextStyles.bodyMediumStyle.copyWith(
                             color: Theme.of(context).hintColor,
                           ),
@@ -60,6 +61,7 @@ class SearchResultPage extends StatelessWidget {
                         child: Center(
                           child: Text(
                             'coinsNotFound'.tr(),
+                            textAlign: TextAlign.center,
                             style: TextStyles.bodyMediumStyle.copyWith(
                               color: Theme.of(context).hintColor,
                             ),

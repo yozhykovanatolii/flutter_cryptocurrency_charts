@@ -79,18 +79,6 @@ class _SearchPageState extends State<SearchPage> {
                   }
                   if (trendingCoinsStatus == SearchStatus.success) {
                     final List<Coin> trendingCoins = state.trendingCoins;
-                    if (trendingCoins.isEmpty) {
-                      return SliverFillRemaining(
-                        child: Center(
-                          child: Text(
-                            'coinsNotFound'.tr(),
-                            style: TextStyles.bodyMediumStyle.copyWith(
-                              color: Theme.of(context).hintColor,
-                            ),
-                          ),
-                        ),
-                      );
-                    }
                     return SliverList.separated(
                       itemCount: trendingCoins.length,
                       itemBuilder: (_, int index) {
