@@ -5,6 +5,7 @@ import 'package:clean_app/presentation/page/search/widget/crypto_coin_list_tile.
 import 'package:clean_app/presentation/page/search/widget/search_result_app_bar.dart';
 import 'package:clean_app/presentation/page/search/widget/shimmer_coin_list_tile.dart';
 import 'package:clean_app/presentation/widget/refresh_button.dart';
+import 'package:clean_app/theme/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,45 +19,62 @@ class SearchResultPage extends StatelessWidget {
     return Scaffold(
       appBar: const SearchResultAppBar(),
       body: Padding(
-        padding: EdgeInsets.only(top: 15.h),
-        child: BlocBuilder<SearchBloc, SearchState>(
-          builder: (BuildContext context, SearchState state) {
-            final SearchStatus searchedCoinsStatus = state.searchedCoinsStatus;
-            if (searchedCoinsStatus == SearchStatus.failure) {
-              return const Center(
-                child: RefreshButton(),
-              );
-            }
-            if (searchedCoinsStatus == SearchStatus.success) {
-              final List<Coin> searchedCoins = state.searchedCoins;
-              return ListView.separated(
-                itemCount: searchedCoins.length,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 15.w,
-                ),
-                itemBuilder: (_, int index) {
-                  return CryptoCoinListTile(
-                    coin: searchedCoins[index],
+        padding: EdgeInsets.only(
+          top: 15.h,
+          left: 15.w,
+          right: 15.w,
+        ),
+        child: RefreshIndicator(
+          onRefresh: () async {
+            context
+                .read<SearchBloc>()
+                .add(const SearchEvent.getCoinsBySearchText());
+          },
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          color: Palette.primary,
+          strokeWidth: 2,
+          child: CustomScrollView(
+            slivers: <Widget>[
+              BlocBuilder<SearchBloc, SearchState>(
+                builder: (BuildContext context, SearchState state) {
+                  final SearchStatus searchedCoinsStatus =
+                      state.searchedCoinsStatus;
+                  if (searchedCoinsStatus == SearchStatus.failure) {
+                    return const SliverFillRemaining(
+                      child: Center(
+                        child: RefreshButton(),
+                      ),
+                    );
+                  }
+                  if (searchedCoinsStatus == SearchStatus.success) {
+                    final List<Coin> searchedCoins = state.searchedCoins;
+                    return SliverList.separated(
+                      itemCount: searchedCoins.length,
+                      itemBuilder: (_, int index) {
+                        return CryptoCoinListTile(
+                          coin: searchedCoins[index],
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) =>
+                          SizedBox(
+                        height: 10.h,
+                      ),
+                    );
+                  }
+                  return SliverList.separated(
+                    itemCount: 15,
+                    itemBuilder: (_, int index) {
+                      return const ShimmerCoinListTile();
+                    },
+                    separatorBuilder: (BuildContext context, int index) =>
+                        SizedBox(
+                      height: 10.h,
+                    ),
                   );
                 },
-                separatorBuilder: (BuildContext context, int index) => SizedBox(
-                  height: 10.h,
-                ),
-              );
-            }
-            return ListView.separated(
-              itemCount: 15,
-              padding: EdgeInsets.symmetric(
-                horizontal: 15.w,
               ),
-              itemBuilder: (_, int index) {
-                return const ShimmerCoinListTile();
-              },
-              separatorBuilder: (BuildContext context, int index) => SizedBox(
-                height: 10.h,
-              ),
-            );
-          },
+            ],
+          ),
         ),
       ),
     );
