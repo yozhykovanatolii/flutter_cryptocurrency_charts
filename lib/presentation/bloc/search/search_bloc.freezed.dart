@@ -469,11 +469,10 @@ abstract class SearchCoinsEvent implements SearchEvent {
 mixin _$SearchState {
   SearchStatus get trendingCoinsStatus => throw _privateConstructorUsedError;
   SearchStatus get searchedCoinsStatus => throw _privateConstructorUsedError;
-  BlocStatus get status => throw _privateConstructorUsedError;
   List<Coin> get trendingCoins => throw _privateConstructorUsedError;
   List<Coin> get searchedCoins => throw _privateConstructorUsedError;
   String get searchText => throw _privateConstructorUsedError;
-  Object? get error => throw _privateConstructorUsedError;
+  SearchErrorType? get searchErrorType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchStateCopyWith<SearchState> get copyWith =>
@@ -489,11 +488,10 @@ abstract class $SearchStateCopyWith<$Res> {
   $Res call(
       {SearchStatus trendingCoinsStatus,
       SearchStatus searchedCoinsStatus,
-      BlocStatus status,
       List<Coin> trendingCoins,
       List<Coin> searchedCoins,
       String searchText,
-      Object? error});
+      SearchErrorType? searchErrorType});
 }
 
 /// @nodoc
@@ -511,11 +509,10 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
   $Res call({
     Object? trendingCoinsStatus = null,
     Object? searchedCoinsStatus = null,
-    Object? status = null,
     Object? trendingCoins = null,
     Object? searchedCoins = null,
     Object? searchText = null,
-    Object? error = freezed,
+    Object? searchErrorType = freezed,
   }) {
     return _then(_value.copyWith(
       trendingCoinsStatus: null == trendingCoinsStatus
@@ -526,10 +523,6 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
           ? _value.searchedCoinsStatus
           : searchedCoinsStatus // ignore: cast_nullable_to_non_nullable
               as SearchStatus,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as BlocStatus,
       trendingCoins: null == trendingCoins
           ? _value.trendingCoins
           : trendingCoins // ignore: cast_nullable_to_non_nullable
@@ -542,7 +535,10 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String,
-      error: freezed == error ? _value.error : error,
+      searchErrorType: freezed == searchErrorType
+          ? _value.searchErrorType
+          : searchErrorType // ignore: cast_nullable_to_non_nullable
+              as SearchErrorType?,
     ) as $Val);
   }
 }
@@ -558,11 +554,10 @@ abstract class _$$SearchStateImplCopyWith<$Res>
   $Res call(
       {SearchStatus trendingCoinsStatus,
       SearchStatus searchedCoinsStatus,
-      BlocStatus status,
       List<Coin> trendingCoins,
       List<Coin> searchedCoins,
       String searchText,
-      Object? error});
+      SearchErrorType? searchErrorType});
 }
 
 /// @nodoc
@@ -578,11 +573,10 @@ class __$$SearchStateImplCopyWithImpl<$Res>
   $Res call({
     Object? trendingCoinsStatus = null,
     Object? searchedCoinsStatus = null,
-    Object? status = null,
     Object? trendingCoins = null,
     Object? searchedCoins = null,
     Object? searchText = null,
-    Object? error = freezed,
+    Object? searchErrorType = freezed,
   }) {
     return _then(_$SearchStateImpl(
       trendingCoinsStatus: null == trendingCoinsStatus
@@ -593,10 +587,6 @@ class __$$SearchStateImplCopyWithImpl<$Res>
           ? _value.searchedCoinsStatus
           : searchedCoinsStatus // ignore: cast_nullable_to_non_nullable
               as SearchStatus,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as BlocStatus,
       trendingCoins: null == trendingCoins
           ? _value._trendingCoins
           : trendingCoins // ignore: cast_nullable_to_non_nullable
@@ -609,7 +599,10 @@ class __$$SearchStateImplCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String,
-      error: freezed == error ? _value.error : error,
+      searchErrorType: freezed == searchErrorType
+          ? _value.searchErrorType
+          : searchErrorType // ignore: cast_nullable_to_non_nullable
+              as SearchErrorType?,
     ));
   }
 }
@@ -620,11 +613,10 @@ class _$SearchStateImpl implements _SearchState {
   const _$SearchStateImpl(
       {required this.trendingCoinsStatus,
       required this.searchedCoinsStatus,
-      required this.status,
       required final List<Coin> trendingCoins,
       required final List<Coin> searchedCoins,
       required this.searchText,
-      this.error})
+      this.searchErrorType})
       : _trendingCoins = trendingCoins,
         _searchedCoins = searchedCoins;
 
@@ -632,8 +624,6 @@ class _$SearchStateImpl implements _SearchState {
   final SearchStatus trendingCoinsStatus;
   @override
   final SearchStatus searchedCoinsStatus;
-  @override
-  final BlocStatus status;
   final List<Coin> _trendingCoins;
   @override
   List<Coin> get trendingCoins {
@@ -653,11 +643,11 @@ class _$SearchStateImpl implements _SearchState {
   @override
   final String searchText;
   @override
-  final Object? error;
+  final SearchErrorType? searchErrorType;
 
   @override
   String toString() {
-    return 'SearchState(trendingCoinsStatus: $trendingCoinsStatus, searchedCoinsStatus: $searchedCoinsStatus, status: $status, trendingCoins: $trendingCoins, searchedCoins: $searchedCoins, searchText: $searchText, error: $error)';
+    return 'SearchState(trendingCoinsStatus: $trendingCoinsStatus, searchedCoinsStatus: $searchedCoinsStatus, trendingCoins: $trendingCoins, searchedCoins: $searchedCoins, searchText: $searchText, searchErrorType: $searchErrorType)';
   }
 
   @override
@@ -669,14 +659,14 @@ class _$SearchStateImpl implements _SearchState {
                 other.trendingCoinsStatus == trendingCoinsStatus) &&
             (identical(other.searchedCoinsStatus, searchedCoinsStatus) ||
                 other.searchedCoinsStatus == searchedCoinsStatus) &&
-            (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._trendingCoins, _trendingCoins) &&
             const DeepCollectionEquality()
                 .equals(other._searchedCoins, _searchedCoins) &&
             (identical(other.searchText, searchText) ||
                 other.searchText == searchText) &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.searchErrorType, searchErrorType) ||
+                other.searchErrorType == searchErrorType));
   }
 
   @override
@@ -684,11 +674,10 @@ class _$SearchStateImpl implements _SearchState {
       runtimeType,
       trendingCoinsStatus,
       searchedCoinsStatus,
-      status,
       const DeepCollectionEquality().hash(_trendingCoins),
       const DeepCollectionEquality().hash(_searchedCoins),
       searchText,
-      const DeepCollectionEquality().hash(error));
+      searchErrorType);
 
   @JsonKey(ignore: true)
   @override
@@ -701,18 +690,15 @@ abstract class _SearchState implements SearchState {
   const factory _SearchState(
       {required final SearchStatus trendingCoinsStatus,
       required final SearchStatus searchedCoinsStatus,
-      required final BlocStatus status,
       required final List<Coin> trendingCoins,
       required final List<Coin> searchedCoins,
       required final String searchText,
-      final Object? error}) = _$SearchStateImpl;
+      final SearchErrorType? searchErrorType}) = _$SearchStateImpl;
 
   @override
   SearchStatus get trendingCoinsStatus;
   @override
   SearchStatus get searchedCoinsStatus;
-  @override
-  BlocStatus get status;
   @override
   List<Coin> get trendingCoins;
   @override
@@ -720,7 +706,7 @@ abstract class _SearchState implements SearchState {
   @override
   String get searchText;
   @override
-  Object? get error;
+  SearchErrorType? get searchErrorType;
   @override
   @JsonKey(ignore: true)
   _$$SearchStateImplCopyWith<_$SearchStateImpl> get copyWith =>

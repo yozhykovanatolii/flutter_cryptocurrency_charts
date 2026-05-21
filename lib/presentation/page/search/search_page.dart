@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clean_app/domain/entity/coin.dart';
+import 'package:clean_app/extensions/search_error_extension.dart';
 import 'package:clean_app/presentation/bloc/search/search_bloc.dart';
 import 'package:clean_app/presentation/page/search/widget/widget.dart';
-import 'package:clean_app/presentation/widget/refresh_button.dart';
 import 'package:clean_app/theme/palette.dart';
 import 'package:clean_app/theme/text_styles.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -65,14 +65,32 @@ class _SearchPageState extends State<SearchPage> {
                   final SearchStatus trendingCoinsStatus =
                       state.trendingCoinsStatus;
                   if (trendingCoinsStatus == SearchStatus.failure) {
-                    return const SliverFillRemaining(
+                    return SliverFillRemaining(
                       child: Center(
-                        child: RefreshButton(),
+                        child: Text(
+                          state.searchErrorType.mapSearchErrorTypeToMessage(),
+                          textAlign: TextAlign.center,
+                          style: TextStyles.bodyMediumStyle.copyWith(
+                            color: Theme.of(context).hintColor,
+                          ),
+                        ),
                       ),
                     );
                   }
                   if (trendingCoinsStatus == SearchStatus.success) {
                     final List<Coin> trendingCoins = state.trendingCoins;
+                    if (trendingCoins.isEmpty) {
+                      return SliverFillRemaining(
+                        child: Center(
+                          child: Text(
+                            'coinsNotFound'.tr(),
+                            style: TextStyles.bodyMediumStyle.copyWith(
+                              color: Theme.of(context).hintColor,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
                     return SliverList.separated(
                       itemCount: trendingCoins.length,
                       itemBuilder: (_, int index) {

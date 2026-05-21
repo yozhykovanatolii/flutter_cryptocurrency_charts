@@ -1,9 +1,8 @@
 import 'dart:io';
-
-import 'package:clean_app/backbone/bloc_status.dart';
 import 'package:clean_app/domain/entity/coin.dart';
 import 'package:clean_app/domain/usecase/get_trending_coins.dart';
 import 'package:clean_app/domain/usecase/search_coins.dart';
+import 'package:clean_app/exception/trending_coins_request_exception.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -35,36 +34,32 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         trendingCoinsStatus: SearchStatus.success,
         trendingCoins: trendingCoins,
       ));
-    } on HttpException catch (e) {
-      if (e.message == '429' && state.trendingCoins.isNotEmpty) {
-        emit(
-          state.copyWith(
-            trendingCoinsStatus: SearchStatus.success,
-          ),
-        );
-      } else {
-        emit(
-          state.copyWith(
-            trendingCoinsStatus: SearchStatus.failure,
-          ),
-        );
-      }
+    } on TrendingCoinsRequestException {
+      emit(
+        state.copyWith(
+          trendingCoinsStatus: SearchStatus.failure,
+          searchErrorType: SearchErrorType.badRequest,
+        ),
+      );
     } on SocketException {
       emit(
         state.copyWith(
           trendingCoinsStatus: SearchStatus.failure,
+          searchErrorType: SearchErrorType.noInternetConnection,
         ),
       );
     } on FormatException {
       emit(
         state.copyWith(
           trendingCoinsStatus: SearchStatus.failure,
+          searchErrorType: SearchErrorType.parsing,
         ),
       );
-    } catch (e) {
+    } catch (_) {
       emit(
         state.copyWith(
           trendingCoinsStatus: SearchStatus.failure,
+          searchErrorType: SearchErrorType.unknown,
         ),
       );
     }
@@ -86,29 +81,43 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       final List<Coin> searchedCoins = await _searchCoinsUseCase.call(
         state.searchText,
       );
-      emit(state.copyWith(
-        searchedCoinsStatus: SearchStatus.success,
-        searchedCoins: searchedCoins,
-      ));
-    } on HttpException catch (e) {
-      if (e.message == '429') {
-        emit(state.copyWith(
+      print('Success');
+      emit(
+        state.copyWith(
           searchedCoinsStatus: SearchStatus.success,
-        ));
-      } else {
-        emit(_errorState('Server error: ${e.message}'));
-      }
+          searchedCoins: searchedCoins,
+        ),
+      );
+    } on TrendingCoinsRequestException {
+      print('Failure');
+      emit(
+        state.copyWith(
+          trendingCoinsStatus: SearchStatus.failure,
+          searchErrorType: SearchErrorType.badRequest,
+        ),
+      );
     } on SocketException {
-      emit(_errorState('No internet connection.'));
+      emit(
+        state.copyWith(
+          trendingCoinsStatus: SearchStatus.failure,
+          searchErrorType: SearchErrorType.noInternetConnection,
+        ),
+      );
     } on FormatException {
-      emit(_errorState('Bad response format.'));
-    } catch (e) {
-      emit(_errorState('An unexpected error occurred: $e'));
+      emit(
+        state.copyWith(
+          trendingCoinsStatus: SearchStatus.failure,
+          searchErrorType: SearchErrorType.parsing,
+        ),
+      );
+    } catch (_) {
+      print('Failure');
+      emit(
+        state.copyWith(
+          trendingCoinsStatus: SearchStatus.failure,
+          searchErrorType: SearchErrorType.unknown,
+        ),
+      );
     }
   }
-
-  SearchState _errorState(String message) => state.copyWith(
-        searchedCoinsStatus: SearchStatus.failure,
-        error: message,
-      );
 }

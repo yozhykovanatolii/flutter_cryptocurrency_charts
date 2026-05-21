@@ -21,5 +21,9 @@
     "top_seven_trending_coins": "Top 7 Trending Coins",
     "day": "d",
     "ukranian": "Ukranian",
-    "searchedResult": "Search results for '{}'"
+    "searchedResult": "Search results for '{}'",
+    "badRequest": "Bad request. Please try again.",
+    "coinsNotFound": "Coins were not found.",
+    "unknownError": "Something went wrong. Please try again.",
+    "invalidResponseFormat": "Invalid response format."
 }

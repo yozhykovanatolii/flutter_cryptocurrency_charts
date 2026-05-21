@@ -6,6 +6,7 @@ import 'package:clean_app/backbone/rest_api_urls.dart';
 import 'package:clean_app/data/mapper/coin_mapper.dart';
 import 'package:clean_app/data/model/coin.dart';
 import 'package:clean_app/data/model/global_data.dart';
+import 'package:clean_app/exception/trending_coins_request_exception.dart';
 import 'package:http/http.dart' as http;
 
 class RestGateway {
@@ -66,12 +67,8 @@ class RestGateway {
       searchingCoinsUrl,
       queryParams: <String, String>{'query': searchText},
     );
-    if (response.statusCode == 429) {
-      throw const HttpException('429');
-    } else if (response.statusCode != 200) {
-      throw HttpException(
-        'Failed to fetch coins. Status: ${response.statusCode}',
-      );
+    if (response.statusCode != 200) {
+      throw TrendingCoinsRequestException();
     }
     final Map<String, dynamic> jsonResponse = json.decode(response.body);
     final List<Map<String, dynamic>> searchedCoinsJson =
@@ -86,12 +83,8 @@ class RestGateway {
 
   Future<List<CoinDto>> getTrendingCoins() async {
     final http.Response response = await _getRequest(baseUrl, trendingCoinsUrl);
-    if (response.statusCode == 429) {
-      throw const HttpException('429');
-    } else if (response.statusCode != 200) {
-      throw HttpException(
-        'Failed to fetch coins. Status: ${response.statusCode}',
-      );
+    if (response.statusCode != 200) {
+      throw TrendingCoinsRequestException();
     }
     final Map<String, dynamic> jsonResponse = json.decode(response.body);
     final List<Map<String, dynamic>> trendingCoinsJson =

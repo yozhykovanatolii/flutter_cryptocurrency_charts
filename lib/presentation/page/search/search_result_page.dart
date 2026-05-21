@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clean_app/domain/entity/coin.dart';
+import 'package:clean_app/extensions/search_error_extension.dart';
 import 'package:clean_app/presentation/bloc/search/search_bloc.dart';
 import 'package:clean_app/presentation/page/search/widget/crypto_coin_list_tile.dart';
 import 'package:clean_app/presentation/page/search/widget/search_result_app_bar.dart';
 import 'package:clean_app/presentation/page/search/widget/shimmer_coin_list_tile.dart';
-import 'package:clean_app/presentation/widget/refresh_button.dart';
 import 'package:clean_app/theme/palette.dart';
+import 'package:clean_app/theme/text_styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,14 +42,31 @@ class SearchResultPage extends StatelessWidget {
                   final SearchStatus searchedCoinsStatus =
                       state.searchedCoinsStatus;
                   if (searchedCoinsStatus == SearchStatus.failure) {
-                    return const SliverFillRemaining(
+                    return SliverFillRemaining(
                       child: Center(
-                        child: RefreshButton(),
+                        child: Text(
+                          state.searchErrorType.mapSearchErrorTypeToMessage(),
+                          style: TextStyles.bodyMediumStyle.copyWith(
+                            color: Theme.of(context).hintColor,
+                          ),
+                        ),
                       ),
                     );
                   }
                   if (searchedCoinsStatus == SearchStatus.success) {
                     final List<Coin> searchedCoins = state.searchedCoins;
+                    if (searchedCoins.isEmpty) {
+                      return SliverFillRemaining(
+                        child: Center(
+                          child: Text(
+                            'coinsNotFound'.tr(),
+                            style: TextStyles.bodyMediumStyle.copyWith(
+                              color: Theme.of(context).hintColor,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
                     return SliverList.separated(
                       itemCount: searchedCoins.length,
                       itemBuilder: (_, int index) {

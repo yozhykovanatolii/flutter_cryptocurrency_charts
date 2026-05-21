@@ -21,5 +21,9 @@
     "top_seven_trending_coins": "Топ 7 найпопулярніших монет",
     "day": "д",
     "ukranian": "Українська",
-    "searchedResult": "Результати пошуку по '{}'"
+    "searchedResult": "Результати пошуку по '{}'",
+    "badRequest": "Неправильний запит. Спробуйте ще раз.",
+    "coinsNotFound": "Монети не були знайдені",
+    "unknownError": "Щось пішло не так. Спробуйте ще раз.",
+    "invalidResponseFormat": "Недійсний формат відповіді."
 }
