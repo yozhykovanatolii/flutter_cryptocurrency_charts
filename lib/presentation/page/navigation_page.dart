@@ -34,6 +34,7 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
+      canPop: false,
       child: Builder(builder: (BuildContext context) {
         return BlocBuilder<InitialDataBloc, InitialDataState>(
             bloc: initialDataBloc,
