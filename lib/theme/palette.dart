@@ -34,4 +34,7 @@ class Palette {
 
   static const Color darkBlue = Color(0xff37434d);
   static const Color darkRed = Color(0xff4D3737);
+
+  static const Color warmBlack = Color(0xFF242322);
+  static const Color lightGray = Color(0xFFBDBDBD);
 }

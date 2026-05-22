@@ -84,9 +84,6 @@ class _$SettingsEventCopyWithImpl<$Res, $Val extends SettingsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of SettingsEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -103,9 +100,6 @@ class __$$GetFiatCurrencyEventImplCopyWithImpl<$Res>
   __$$GetFiatCurrencyEventImplCopyWithImpl(_$GetFiatCurrencyEventImpl _value,
       $Res Function(_$GetFiatCurrencyEventImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of SettingsEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -227,8 +221,6 @@ class __$$SelectFiatCurrencyEventImplCopyWithImpl<$Res>
       $Res Function(_$SelectFiatCurrencyEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SettingsEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -268,9 +260,7 @@ class _$SelectFiatCurrencyEventImpl extends SelectFiatCurrencyEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fiatCurrency);
 
-  /// Create a copy of SettingsEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectFiatCurrencyEventImplCopyWith<_$SelectFiatCurrencyEventImpl>
@@ -358,10 +348,7 @@ abstract class SelectFiatCurrencyEvent extends SettingsEvent {
   const SelectFiatCurrencyEvent._() : super._();
 
   String get fiatCurrency;
-
-  /// Create a copy of SettingsEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SelectFiatCurrencyEventImplCopyWith<_$SelectFiatCurrencyEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -380,9 +367,6 @@ class __$$GetThemeEventImplCopyWithImpl<$Res>
   __$$GetThemeEventImplCopyWithImpl(
       _$GetThemeEventImpl _value, $Res Function(_$GetThemeEventImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of SettingsEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -501,8 +485,6 @@ class __$$SelectThemeEventImplCopyWithImpl<$Res>
       $Res Function(_$SelectThemeEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SettingsEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -542,9 +524,7 @@ class _$SelectThemeEventImpl extends SelectThemeEvent {
   @override
   int get hashCode => Object.hash(runtimeType, themeType);
 
-  /// Create a copy of SettingsEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectThemeEventImplCopyWith<_$SelectThemeEventImpl> get copyWith =>
@@ -632,10 +612,7 @@ abstract class SelectThemeEvent extends SettingsEvent {
   const SelectThemeEvent._() : super._();
 
   String get themeType;
-
-  /// Create a copy of SettingsEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SelectThemeEventImplCopyWith<_$SelectThemeEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

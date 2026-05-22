@@ -33,10 +33,8 @@ class _NavigationPageState extends State<NavigationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
+    return PopScope(
+      canPop: false,
       child: Builder(builder: (BuildContext context) {
         return BlocBuilder<InitialDataBloc, InitialDataState>(
             bloc: initialDataBloc,
@@ -51,6 +49,7 @@ class _NavigationPageState extends State<NavigationPage> {
                 backgroundColor: Theme.of(context).primaryColor,
                 routes: const <PageRouteInfo<dynamic>>[
                   RatingsRoute(),
+                  SearchWrapperRoute(),
                   MarketRoute(),
                   SettingsRoute(),
                 ],
@@ -77,6 +76,19 @@ class _NavigationPageState extends State<NavigationPage> {
                           ),
                           title: Text(
                             'ratings'.tr(),
+                          ),
+                        ),
+                        SalomonBottomBarItem(
+                          activeIcon: Icon(
+                            Icons.search,
+                            color: Theme.of(context).focusColor,
+                          ),
+                          icon: Icon(
+                            Icons.search,
+                            color: Theme.of(context).hintColor,
+                          ),
+                          title: Text(
+                            'search'.tr(),
                           ),
                         ),
                         SalomonBottomBarItem(

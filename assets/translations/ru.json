@@ -14,9 +14,16 @@
     "russian": "Русский",
     "sectors": "Секторы",
     "settings": "Настройки",
+    "search": "Поиск",
     "switch_to_day_mode": "Сменить на Дневную тему",
     "switch_to_night_mode": "Сменить на Ночную тему",
     "top_five_coins": "Топ 5 Монет",
+    "top_seven_trending_coins": "Топ 7 самых популярных монет",
     "day": "д",
-    "ukranian": "Украинский"
+    "ukranian": "Украинский",
+    "searchedResult": "Результаты поиска по '{}'",
+    "badRequest": "Неверный запрос. Пожалуйста, попробуйте еще раз.",
+    "coinsNotFound": "Монеты не были найдены.",
+    "unknownError": "Что-то пошло не так. Попробуйте снова.",
+    "invalidResponseFormat": "Неверный формат ответа."
 }

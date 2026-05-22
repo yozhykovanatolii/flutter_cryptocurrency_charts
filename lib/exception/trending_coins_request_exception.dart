@@ -1,0 +1,1 @@
+class TrendingCoinsRequestException implements Exception {}

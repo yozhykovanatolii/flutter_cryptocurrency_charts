@@ -35,4 +35,22 @@ class TextStyles {
     fontWeight: FontWeight.w600,
     color: Palette.overlay3,
   );
+  static TextStyle hintStyle = TextStyle(
+    color: Palette.lightGray,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Inter',
+  );
+  static TextStyle bodyMediumStyle = TextStyle(
+    color: Palette.white,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Inter',
+  );
+  static TextStyle sectionTextStyle = TextStyle(
+    color: Palette.white,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'Inter',
+  );
 }

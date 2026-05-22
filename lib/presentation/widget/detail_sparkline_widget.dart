@@ -127,7 +127,7 @@ class _SparklineWidgetState extends State<DetailSparklineWidget> {
             show: widget.showBarArea,
             gradient: LinearGradient(
               colors: gradientColors
-                  .map((Color color) => color.withOpacity(0.3))
+                  .map((Color color) => color.withValues(alpha: 0.3))
                   .toList(),
             ),
           ),

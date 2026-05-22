@@ -84,9 +84,6 @@ class _$InitialDataEventCopyWithImpl<$Res, $Val extends InitialDataEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of InitialDataEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,8 +103,6 @@ class __$$GetMarketCoinsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetMarketCoinsEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of InitialDataEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -175,9 +170,7 @@ class _$GetMarketCoinsEventImpl extends GetMarketCoinsEvent {
   int get hashCode =>
       Object.hash(runtimeType, order, pageNumber, perPage, sparkline);
 
-  /// Create a copy of InitialDataEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMarketCoinsEventImplCopyWith<_$GetMarketCoinsEventImpl> get copyWith =>
@@ -268,10 +261,7 @@ abstract class GetMarketCoinsEvent extends InitialDataEvent {
   int get pageNumber;
   int get perPage;
   String get sparkline;
-
-  /// Create a copy of InitialDataEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$GetMarketCoinsEventImplCopyWith<_$GetMarketCoinsEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -290,9 +280,6 @@ class __$$GetGlobalDataEventImplCopyWithImpl<$Res>
   __$$GetGlobalDataEventImplCopyWithImpl(_$GetGlobalDataEventImpl _value,
       $Res Function(_$GetGlobalDataEventImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of InitialDataEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -408,9 +395,6 @@ class __$$GetFiatCurrencyEventImplCopyWithImpl<$Res>
   __$$GetFiatCurrencyEventImplCopyWithImpl(_$GetFiatCurrencyEventImpl _value,
       $Res Function(_$GetFiatCurrencyEventImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of InitialDataEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -521,9 +505,7 @@ mixin _$InitialDataState {
   String? get fiatCurrency => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
 
-  /// Create a copy of InitialDataState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $InitialDataStateCopyWith<InitialDataState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -552,8 +534,6 @@ class _$InitialDataStateCopyWithImpl<$Res, $Val extends InitialDataState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of InitialDataState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -609,8 +589,6 @@ class __$$InitialDataStateImplCopyWithImpl<$Res>
       $Res Function(_$InitialDataStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of InitialDataState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -698,9 +676,7 @@ class _$InitialDataStateImpl implements _InitialDataState {
       fiatCurrency,
       const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of InitialDataState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialDataStateImplCopyWith<_$InitialDataStateImpl> get copyWith =>
@@ -726,11 +702,8 @@ abstract class _InitialDataState implements InitialDataState {
   String? get fiatCurrency;
   @override
   Object? get error;
-
-  /// Create a copy of InitialDataState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$InitialDataStateImplCopyWith<_$InitialDataStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

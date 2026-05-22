@@ -16,6 +16,18 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               page: RatingsRoute.page,
             ),
+            AutoRoute(
+              page: SearchWrapperRoute.page,
+              children: <AutoRoute>[
+                AutoRoute(
+                  page: SearchRoute.page,
+                  initial: true,
+                ),
+                AutoRoute(
+                  page: SearchResultRoute.page,
+                ),
+              ],
+            ),
             // Define Market route
             AutoRoute(
               page: MarketRoute.page,

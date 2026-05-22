@@ -60,9 +60,7 @@ mixin _$CoinEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of CoinEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CoinEventCopyWith<CoinEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -90,8 +88,6 @@ class _$CoinEventCopyWithImpl<$Res, $Val extends CoinEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CoinEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,8 +146,6 @@ class __$$GetMarketCoinsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetMarketCoinsEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CoinEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -228,9 +222,7 @@ class _$GetMarketCoinsEventImpl extends GetMarketCoinsEvent {
   int get hashCode =>
       Object.hash(runtimeType, currency, order, pageNumber, perPage, sparkline);
 
-  /// Create a copy of CoinEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMarketCoinsEventImplCopyWith<_$GetMarketCoinsEventImpl> get copyWith =>
@@ -320,11 +312,8 @@ abstract class GetMarketCoinsEvent extends CoinEvent {
   int get perPage;
   @override
   String get sparkline;
-
-  /// Create a copy of CoinEvent
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$GetMarketCoinsEventImplCopyWith<_$GetMarketCoinsEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -335,9 +324,7 @@ mixin _$CoinState {
   List<Coin> get coins => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
 
-  /// Create a copy of CoinState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CoinStateCopyWith<CoinState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -360,8 +347,6 @@ class _$CoinStateCopyWithImpl<$Res, $Val extends CoinState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CoinState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -402,8 +387,6 @@ class __$$CoinStateImplCopyWithImpl<$Res>
       _$CoinStateImpl _value, $Res Function(_$CoinStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CoinState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -467,9 +450,7 @@ class _$CoinStateImpl implements _CoinState {
       const DeepCollectionEquality().hash(_coins),
       const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of CoinState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CoinStateImplCopyWith<_$CoinStateImpl> get copyWith =>
@@ -488,11 +469,8 @@ abstract class _CoinState implements CoinState {
   List<Coin> get coins;
   @override
   Object? get error;
-
-  /// Create a copy of CoinState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CoinStateImplCopyWith<_$CoinStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

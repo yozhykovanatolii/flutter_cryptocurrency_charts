@@ -14,9 +14,16 @@
     "russian": "Russian",
     "sectors": "Sectors",
     "settings": "Settings",
+    "search": "Search",
     "switch_to_day_mode": "Switch to Day Mode",
     "switch_to_night_mode": "Switch to Night Mode",
     "top_five_coins": "Top 5 Coins",
+    "top_seven_trending_coins": "Top 7 Trending Coins",
     "day": "d",
-    "ukranian": "Ukranian"
+    "ukranian": "Ukranian",
+    "searchedResult": "Search results for '{}'",
+    "badRequest": "Bad request. Please try again.",
+    "coinsNotFound": "Coins were not found.",
+    "unknownError": "Something went wrong. Please try again.",
+    "invalidResponseFormat": "Invalid response format."
 }

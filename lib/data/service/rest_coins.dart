@@ -21,4 +21,22 @@ class RestCoinService implements CoinService {
     );
     return dtoList.map((CoinDto dto) => _factory.create(dto)).toList();
   }
+
+  @override
+  Future<List<Coin>> getTrendingCoins() async {
+    final List<CoinDto> trendingCoinsDto = await _gateway.getTrendingCoins();
+    final List<CoinDto> topSevenTrendingCoins =
+        trendingCoinsDto.getRange(0, 7).toList();
+    return topSevenTrendingCoins
+        .map((CoinDto dto) => _factory.create(dto))
+        .toList();
+  }
+
+  @override
+  Future<List<Coin>> getCoinsBySearchText(String searchText) async {
+    final List<CoinDto> searchedCoinsDto = await _gateway.getCoinsBySearchText(
+      searchText,
+    );
+    return searchedCoinsDto.map((CoinDto dto) => _factory.create(dto)).toList();
+  }
 }

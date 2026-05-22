@@ -23,11 +23,14 @@ import 'package:clean_app/domain/usecase/get_fiat_currency.dart';
 import 'package:clean_app/domain/usecase/get_global_data.dart';
 import 'package:clean_app/domain/usecase/get_market_coins.dart';
 import 'package:clean_app/domain/usecase/get_theme.dart';
+import 'package:clean_app/domain/usecase/get_trending_coins.dart';
+import 'package:clean_app/domain/usecase/search_coins.dart';
 import 'package:clean_app/domain/usecase/select_fiat_currency.dart';
 import 'package:clean_app/domain/usecase/select_theme.dart';
 import 'package:clean_app/presentation/bloc/coin/bloc.dart';
 import 'package:clean_app/presentation/bloc/global_data/bloc.dart';
 import 'package:clean_app/presentation/bloc/initial_data/initial_data_bloc.dart';
+import 'package:clean_app/presentation/bloc/search/search_bloc.dart';
 import 'package:clean_app/presentation/bloc/settings/bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -68,6 +71,10 @@ void init() {
   sl.registerLazySingleton<SettingsService>(
       () => HiveSettingsSerivce(sl.get()));
   //UseCase
+  sl.registerLazySingleton<GetTrendingCoinsUseCase>(
+      () => RestGetTrendingCoinsUseCase(sl.get()));
+  sl.registerLazySingleton<SearchCoinsUseCase>(
+      () => RestSearchCoinsUseCase(sl.get()));
   sl.registerLazySingleton<GetMarketCoinsUseCase>(
       () => RestGetMarketCoinsUseCase(sl.get()));
   sl.registerLazySingleton<GetGlobalDataUseCase>(
@@ -90,4 +97,10 @@ void init() {
         sl.get(),
         sl.get(),
       ));
+  sl.registerLazySingleton<SearchBloc>(
+    () => SearchBloc(
+      sl.get<SearchCoinsUseCase>(),
+      sl.get<GetTrendingCoinsUseCase>(),
+    ),
+  );
 }
