@@ -11,7 +11,7 @@ class CoinMapper {
       'image': item['thumb'],
       'current_price': item['data']?['price'],
       'market_cap': item['market_cap_rank'],
-      'price_change_percentage_24h': item['data']?['price'],
+      'price_change_percentage_24h': 0,
       'sparkline_in_7d': <String, dynamic>{'price': <dynamic>[]},
     };
   }
