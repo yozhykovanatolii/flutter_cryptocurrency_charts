@@ -42,13 +42,13 @@ class TextStyles {
     fontFamily: 'Inter',
   );
   static TextStyle bodyMediumStyle = TextStyle(
-    color: Colors.white,
+    color: Palette.white,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
     fontFamily: 'Inter',
   );
   static TextStyle sectionTextStyle = TextStyle(
-    color: Colors.white,
+    color: Palette.white,
     fontSize: 18.sp,
     fontWeight: FontWeight.w700,
     fontFamily: 'Inter',

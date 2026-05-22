@@ -81,7 +81,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       final List<Coin> searchedCoins = await _searchCoinsUseCase.call(
         state.searchText,
       );
-      print('Success');
       emit(
         state.copyWith(
           searchedCoinsStatus: SearchStatus.success,
@@ -89,32 +88,30 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         ),
       );
     } on TrendingCoinsRequestException {
-      print('Failure');
       emit(
         state.copyWith(
-          trendingCoinsStatus: SearchStatus.failure,
+          searchedCoinsStatus: SearchStatus.failure,
           searchErrorType: SearchErrorType.badRequest,
         ),
       );
     } on SocketException {
       emit(
         state.copyWith(
-          trendingCoinsStatus: SearchStatus.failure,
+          searchedCoinsStatus: SearchStatus.failure,
           searchErrorType: SearchErrorType.noInternetConnection,
         ),
       );
     } on FormatException {
       emit(
         state.copyWith(
-          trendingCoinsStatus: SearchStatus.failure,
+          searchedCoinsStatus: SearchStatus.failure,
           searchErrorType: SearchErrorType.parsing,
         ),
       );
     } catch (_) {
-      print('Failure');
       emit(
         state.copyWith(
-          trendingCoinsStatus: SearchStatus.failure,
+          searchedCoinsStatus: SearchStatus.failure,
           searchErrorType: SearchErrorType.unknown,
         ),
       );
